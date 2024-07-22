@@ -1,0 +1,45 @@
+
+<mat-toolbar color="primary">
+  <span>Dealer Portal</span>
+  <span class="spacer"></span>
+  <button mat-button>Login</button>
+</mat-toolbar> 
+
+
+
+ <div class="content">
+  <mat-toolbar>
+    <!-- <mat-tab-group>
+      <mat-tab label="Dashboard" >
+       <ng-template matTabContent><router-outlet></router-outlet></ng-template>
+      </mat-tab>
+      <mat-tab label="Leads" [routerLink]="['/leads']"></mat-tab>
+      <mat-tab label="Deals" [routerLink]="['/deals']"></mat-tab>
+     
+    </mat-tab-group> -->
+    
+    <nav>
+      <ul>
+        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/leads" routerLinkActive="active">Leads</a></li>
+        <li><a routerLink="/deals" routerLinkActive="active">Deals</a></li>
+      </ul>
+    </nav>
+  
+   
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill" class="vendor-id-input">
+      <mat-label>Vendor ID</mat-label>
+      <input matInput placeholder="Enter Vendor ID">
+    </mat-form-field>
+    <button mat-stroked-button color="primary">Switch</button>
+  </mat-toolbar> 
+  <router-outlet></router-outlet>
+ 
+
+ </div> 
+
+
+<mat-toolbar color="accent" class="footer">
+  <span> &copy; 2024 Dealer Portal</span>
+</mat-toolbar> 
