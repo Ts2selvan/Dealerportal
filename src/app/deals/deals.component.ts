@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Timestamp } from 'rxjs';
 
 @Component({
   selector: 'app-deals',

@@ -1,70 +1,53 @@
-
-  
-  <div class="container">
-    
-    <!-- <mat-tab-group>
-      <mat-tab label="Dashboard"> -->
-        <div class="dashboard-content">
-          <mat-card>
-            <mat-card-title>Month to Date</mat-card-title>
-            <mat-card-content>
-              
-              <div class="stats">
-                <div class="stat">Leads: -</div>
-                <div class="stat">Applications Sent: -</div>
-                <div class="stat">Contracts Pending: -</div>
-                <div class="stat">Contracts Funded: -</div>
-                <div class="stat">Total Payments to Dealer: -</div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-          
-        
-          
-          <mat-card>
-            <mat-card-title>Most Recent Deals</mat-card-title>
-            <mat-card-content>
-              
-              <div>
-                <button pButton type="button" label="View All Details" class="button"></button>
-                <p-table [value]="deals">
-                  <ng-template pTemplate="header">
-                    <tr>
-                      <th>App ID</th>
-                      <th>Applicant</th>
-                      <th>Applicant Date</th>
-                      <th>Contract Date</th>
-                      <th>Year</th>
-                      <th>Make</th>
-                      <th>Model</th>
-                      <th>Status</th>
-                      <th>Last Update</th>
-                    </tr>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-deal>
-                    <tr>
-                      <td>{{deal.appId}}</td>
-                      <td>{{deal.applicant}}</td>
-                      <td>{{deal.applicantDate}}</td>
-                      <td>{{deal.contractDate}}</td>
-                      <td>{{deal.year}}</td>
-                      <td>{{deal.make}}</td>
-                      <td>{{deal.model}}</td>
-                      <td>{{deal.status}}</td>
-                      <td>{{deal.lastUpdate}}</td>
-                    </tr>
-                  </ng-template>
-                </p-table>
-              </div>
-            </mat-card-content>
-          </mat-card>
+<div class="container">
+  <div class="dashboard-content">
+    <mat-card>
+      <mat-card-title>Month to Date</mat-card-title>
+      <mat-card-content>
+        <div class="stats">
+          <div class="stat">Leads: - </div>
+          <div class="stat">Applications Sent: - </div>
+          <div class="stat">Contracts Pending: - </div>
+          <div class="stat">Contracts Funded: - </div>
+          <div class="stat">Total Payments to Dealer: - </div>
         </div>
-      <!-- </mat-tab> 
-       <mat-tab label="Leads" routerLink="leads"></mat-tab>
-      <mat-tab label="Deals">Deals Content</mat-tab>
-      <mat-tab label="Dealer Payoff">Dealer Payoff Content</mat-tab>
-    </mat-tab-group> -->
-   
+      </mat-card-content>
+    </mat-card>
 
+    <mat-card>
+      <mat-card-title>Most Recent Deals</mat-card-title>
+      <mat-card-content>
+        <div>
+          <button pButton type="button" label="View All Details" class="button"></button>
+          <p-table [value]="deals" class="p-table">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>App ID</th>
+                <th>Applicant</th>
+                <th>Applicant Date</th>
+                <th>Contract Date</th>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Status</th>
+                <th>Last Update</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-deal>
+              <tr>
+                <td>{{ deal.applicantId }}</td>
+                <td>{{ deal.applicant }}</td>
+                <td>{{ deal.applicantDate }}</td>
+                <td>{{ deal.contractDate }}</td>
+                <td>{{ deal.year }}</td>
+                <td>{{ deal.make }}</td>
+                <td>{{ deal.model }}</td>
+                <td>{{ deal.status }}</td>
+                <td>{{ deal.lastUpdate }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
-  
+</div>

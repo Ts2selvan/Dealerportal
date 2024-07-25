@@ -24,6 +24,7 @@
    
   
   .footer {
+ 
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -52,4 +53,10 @@ nav ul {
   }
     .spacer {
     flex: 1 1 auto;
+  }
+  .vendor-name {
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
   }

@@ -1,6 +1,11 @@
 
 <mat-toolbar color="primary">
-  <span>Dealer Portal</span>
+  <span>Dealer Portal</span>&nbsp;
+  
+  <div *ngIf="vendorName" class="vendor-name">
+    <span>|</span>
+    {{ vendorName }}
+  </div>
   <span class="spacer"></span>
   <button mat-button>Login</button>
 </mat-toolbar> 
@@ -30,9 +35,9 @@
     <span class="spacer"></span>
     <mat-form-field appearance="fill" class="vendor-id-input">
       <mat-label>Vendor ID</mat-label>
-      <input matInput placeholder="Enter Vendor ID">
+      <input matInput placeholder="Enter Vendor ID" [(ngModel)]="vendorId">
     </mat-form-field>
-    <button mat-stroked-button color="primary">Switch</button>
+    <button mat-stroked-button color="primary" (click)="updateVendorId()">Switch</button>
   </mat-toolbar> 
   <router-outlet></router-outlet>
  
@@ -40,6 +45,6 @@
  </div> 
 
 
-<mat-toolbar color="accent" class="footer">
+<mat-toolbar color="white" class="footer">
   <span> &copy; 2024 Dealer Portal</span>
 </mat-toolbar> 
