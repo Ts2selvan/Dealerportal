@@ -12,13 +12,44 @@ export class AppComponent {
 
   vendorId: any = '';
   // vendorName:  any[] = [];
-  vendorName: string | null = null;
-  constructor(private router:Router,private appService:AppService){this.router.navigate(['/dashboard']);}
+  vendorName:any='';
+  isLoggedIn: boolean = false;
+
+
+ 
+  username = '';
+ 
+ 
+  loginCredentials = { username: '', password: '' };
+
+
+
+  constructor(private router:Router,private appService:AppService){}
  
   ngOnInit(){
     this.appService.currentVendorName.subscribe(
       name=>this.vendorName=name);
     
+  }
+  login() {
+   
+    if (this.loginCredentials.username === 'admin' && this.loginCredentials.password === '123') {
+      this.isLoggedIn = true;
+      this.username='Selvan R'
+      //this.username = this.loginCredentials.username;
+      // Set vendorName or other details as needed
+      //this.vendorName = 'Vendor Name';
+    } else {
+      alert('Invalid credentials');
+    }
+  }
+
+  logout() {
+
+    this.isLoggedIn = false;
+    this.username = '';
+    this.vendorName = '';
+    this.vendorId = '';
   }
  
 

@@ -1,50 +1,58 @@
-
-<mat-toolbar color="primary">
-  <span>Dealer Portal</span>&nbsp;
-  
-  <div *ngIf="vendorName" class="vendor-name">
-    <span>|</span>
-    {{ vendorName }}
+<ng-container *ngIf="!isLoggedIn; else loggedInContent">
+  <div class="login-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="loginCredentials.username">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="loginCredentials.password" type="password">
+        </mat-form-field>
+        <button mat-stroked-button color="primary" (click)="login()">Login</button>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <span class="spacer"></span>
-  <button mat-button>Login</button>
-</mat-toolbar> 
+</ng-container>
 
-
-
- <div class="content">
-  <mat-toolbar>
-    <!-- <mat-tab-group>
-      <mat-tab label="Dashboard" >
-       <ng-template matTabContent><router-outlet></router-outlet></ng-template>
-      </mat-tab>
-      <mat-tab label="Leads" [routerLink]="['/leads']"></mat-tab>
-      <mat-tab label="Deals" [routerLink]="['/deals']"></mat-tab>
-     
-    </mat-tab-group> -->
-    
-    <nav>
-      <ul>
-        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-        <li><a routerLink="/leads" routerLinkActive="active">Leads</a></li>
-        <li><a routerLink="/deals" routerLinkActive="active">Deals</a></li>
-      </ul>
-    </nav>
-  
-   
+<ng-template #loggedInContent>
+  <mat-toolbar color="primary">
+    <span>Dealer Portal</span>
+    <div *ngIf="vendorName" class="vendor-name">
+      <span>|</span>
+      {{ vendorName }}
+    </div>
     <span class="spacer"></span>
-    <mat-form-field appearance="fill" class="vendor-id-input">
-      <mat-label>Vendor ID</mat-label>
-      <input matInput placeholder="Enter Vendor ID" [(ngModel)]="vendorId">
-    </mat-form-field>
-    <button mat-stroked-button color="primary" (click)="updateVendorId()">Switch</button>
-  </mat-toolbar> 
-  <router-outlet></router-outlet>
- 
-
- </div> 
-
-
-<mat-toolbar color="white" class="footer">
-  <span> &copy; 2024 Dealer Portal</span>
-</mat-toolbar> 
+    <div class="user-menu">
+      <button mat-button [matMenuTriggerFor]="menu">{{ username }}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <div class="content">
+    <mat-toolbar>
+      <nav>
+        <ul>
+          <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+          <li><a routerLink="/leads" routerLinkActive="active">Leads</a></li>
+          <li><a routerLink="/deals" routerLinkActive="active">Deals</a></li>
+        </ul>
+      </nav>
+      <span class="spacer"></span>
+      <mat-form-field appearance="fill" class="vendor-id-input">
+        <mat-label>Vendor ID</mat-label>
+        <input matInput placeholder="Enter Vendor ID" [(ngModel)]="vendorId">
+      </mat-form-field>
+      <button mat-stroked-button color="primary" (click)="updateVendorId()">Switch</button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </div>
+  <mat-toolbar color="white" class="footer">
+    <span> &copy; 2024 Dealer Portal</span>
+  </mat-toolbar>
+</ng-template>

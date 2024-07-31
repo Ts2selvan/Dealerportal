@@ -1,62 +1,64 @@
-// .content {
-//     margin: 20px;
-  
-//     .mat-toolbar {
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-//       padding: 0 16px;
-//       background: none;
-//       box-shadow: none;
-  
-//       .vendor-id-input {
-//         margin-right: 16px;
-//       }
-  
-//       .spacer {
-//         flex: 1 1 auto;
-//       }
-//     }
-//   }
-//   .spacer {
-//     flex: 1 1 auto;
-//   }
-   
-  
-  .footer {
- 
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-  }
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-   
-  nav ul li {
-    display: inline;
-    margin-right: 10px;
-  }
-   
-  nav ul li a {
-    text-decoration: none;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-   
-  nav ul li a.active {
-    background-color: #007bff;
-    color: white;
-  }
-    .spacer {
-    flex: 1 1 auto;
-  }
-  .vendor-name {
-    margin: 10px;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #333;
-  }
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+nav ul li a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.vendor-name {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjust as necessary */
+}
+
+.mat-card {
+  width: 400px;
+  padding: 20px;
+}
+
+.content {
+  padding-top: 10px; /* Adjust for toolbar height */
+}
+
+.vendor-id-input {
+  margin-right: 10px;
+}

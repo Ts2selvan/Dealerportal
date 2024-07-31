@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -23,13 +24,16 @@ import { LeadsComponent } from './leads/leads.component';
 import { DealsComponent } from './deals/deals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LeadsComponent,
-    DealsComponent
+    DealsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +53,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MatSliderModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
