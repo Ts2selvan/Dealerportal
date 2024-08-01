@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -54,7 +55,8 @@ import { AuthGuard } from './auth.guard';
     MatSliderModule,
     FormsModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
 
   ],
   providers: [AuthGuard],
