@@ -33,15 +33,17 @@ export class AppComponent {
   }
   login() {
    
-    if (this.loginCredentials.username === 'admin' && this.loginCredentials.password === '123') {
-      this.isLoggedIn = true;
-      this.username='Selvan R'
-      //this.username = this.loginCredentials.username;
-      // Set vendorName or other details as needed
-      //this.vendorName = 'Vendor Name';
-    } else {
-      alert('Invalid credentials');
-    }
+    this.appService.login(this.loginCredentials).subscribe(
+      response => {
+        // alert('Login successful!');
+         this.isLoggedIn = true;
+         this.username = this.loginCredentials.username;
+        
+      },
+      error => {
+        alert('Invalid credentials');
+      }
+    );
   }
 
   logout() {

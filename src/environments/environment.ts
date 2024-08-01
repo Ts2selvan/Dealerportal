@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrlforGet: 'https://localhost:44344/api/Vendor/Details',
-  apiUrlLogin:'https://localhost:44344/api/Vendor/Details'
+  apiUrlLogin:'https://localhost:44344/api/User/Login'
 };
 
 /*

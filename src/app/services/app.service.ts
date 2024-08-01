@@ -27,6 +27,9 @@ export class AppService {
   changeVendorId(vendorId: string) {
     this.vendorIdSource.next(vendorId);
   }
+  login(user:any){
+    return this.http.post(`${environment.apiUrlLogin}`, user);
+  } 
 
   getDeals(vendorId: string): Observable<any[]> {
     
