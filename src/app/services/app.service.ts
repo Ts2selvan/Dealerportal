@@ -40,4 +40,7 @@ export class AppService {
     return this.http.get<any>(`${environment.apiUrlforGet}/${vendorId}`).pipe(
       map(response => response.vendorName));
   }
+  getAllDeals(){
+    return this.http.get<any[]>(`${environment.apiUrlforGetAll}`);
+  }
 }

@@ -1,31 +1,31 @@
 .container {
   margin: 20px;
-
+ 
   .mat-tab-group {
     background: white;
   }
 }
-
+ 
 .dashboard-content {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
+ 
   mat-card {
     background: #fafafa;
-
+ 
     mat-card-title {
       font-weight: bold;
       font-size: 1.2em;
       margin-bottom: 10px;
     }
-
+ 
     mat-card-content {
       .stats {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-
+ 
         .stat {
           flex: 1 1 200px;
           background: #f5f5f5;
@@ -33,40 +33,60 @@
           border-radius: 5px;
           text-align: center;
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+ 
           &:hover {
             background: #e0e0e0;
           }
         }
       }
-
+ 
       .p-table {
         width: 100%;
         border-collapse: collapse;
-
+ 
         th, td {
           padding: 10px;
           border: 1px solid #ddd;
           text-align: left;
         }
-
+ 
         th {
           background-color: #f5f5f5;
           font-weight: bold;
         }
-
+ 
         tr:nth-child(even) {
           background-color: #f9f9f9;
         }
-
+ 
         tr:hover {
           background-color: #f1f1f1;
         }
-
+ 
         th, td {
           text-align: center; // Ensure all text is centered
         }
       }
     }
   }
+ 
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+    .button.highlighted-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+ 
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
 }
+ 
