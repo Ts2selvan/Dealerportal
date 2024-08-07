@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
         console.log('data', data);
         this.deals = data;
         this.totalRecords = data.length;
-        //this.appService.changeVendorName(this.deals[0].vendorName)
+        this.appService.changeVendorName('')
         //this.deals = Array.isArray(data) ? data : [];
         console.log('this.deals', data);
       },
