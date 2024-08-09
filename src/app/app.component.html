@@ -30,6 +30,7 @@
     <div class="user-menu">
       <button mat-button [matMenuTriggerFor]="menu">{{ username }}</button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="profile()">Profile Settings</button>
         <button mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
     </div>

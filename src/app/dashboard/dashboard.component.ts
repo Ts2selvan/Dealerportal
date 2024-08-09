@@ -8,7 +8,14 @@ import { AppService } from '../services/app.service';
 })
 export class DashboardComponent implements OnInit {
   vendorId: string | null = null;
+  vendorIdForDate:any
   deals: any[] = [];
+  selectedRange: string = 'monthToDate';
+  filteredStats: any;
+  applicationsSent:number=0;
+  contractsPending:number=0;
+  contractsFunded:number=0;
+  totalPaymentsToDealer:number=0;
 
   totalRecords: number = 0; // To store the total number of records
  
@@ -21,6 +28,7 @@ export class DashboardComponent implements OnInit {
     this.appService.currentVendorId.subscribe(vendorId => {
       debugger;
       this.vendorId = vendorId;
+      this.vendorIdForDate=vendorId
       if (vendorId) {
         this.fetchDeals(vendorId);
       } else {
@@ -28,9 +36,21 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  onRangeChange(checked: boolean): void {
+    this.selectedRange = checked ? 'last30Days' : 'monthToDate';
+    
+    this.fetchDeals(this.vendorIdForDate);
+  }
  
   fetchDeals(vendorId: string) {
-    debugger;
+ 
+
+
+    const now = new Date();
+    let startDate: Date;
+    let endDate: Date = new Date();
+
+
     this.appService.getDeals(vendorId).subscribe(
       
       data => {
@@ -39,8 +59,64 @@ export class DashboardComponent implements OnInit {
         this.deals = data;
         this.totalRecords = data.length;
         this.appService.changeVendorName(this.deals[0].vendorName)
-        //this.deals = Array.isArray(data) ? data : [];
+      
         console.log('this.deals', data);
+        this.applicationsSent=0;
+        if (this.selectedRange === 'monthToDate') {
+          startDate = new Date(now.getFullYear(), now.getMonth(), 1); 
+
+          this.applicationsSent = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='Approved';
+          }).length;// Start of the current month
+
+          this.contractsPending = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='Pending';
+          }).length;// Start of the current month
+
+          this.contractsFunded = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='CreditFunded';
+          }).length;// Start of the current month
+
+          this.totalPaymentsToDealer = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='TotallyCredited';
+          }).length;// Start of the current month
+
+
+        } else if (this.selectedRange === 'last30Days') {
+          startDate = new Date();
+          startDate.setDate(now.getDate() - 30); // Last 30 days
+
+          startDate = new Date(now.getFullYear(), now.getMonth(), 1); 
+
+          this.applicationsSent = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='Approved';
+          }).length;// Start of the current month
+
+          this.contractsPending = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='Pending';
+          }).length;// Start of the current month
+
+          this.contractsFunded = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='CreditFunded';
+          }).length;// Start of the current month
+
+          this.totalPaymentsToDealer = this.deals.filter(deal => {
+            const dealDate = new Date(deal.applicantDate);
+            return dealDate >= startDate && dealDate <= endDate && deal.status ==='TotallyCredited';
+          }).length;// Start of the current month
+        }
+        
+       
+       
+
+
       },
       error => {
         console.error('Error fetching deals', error);
@@ -72,7 +148,7 @@ export class DashboardComponent implements OnInit {
         console.log('data', data);
         this.deals = data;
         this.totalRecords = data.length;
-        this.appService.changeVendorName('')
+        this.appService.changeVendorName('0')
         //this.deals = Array.isArray(data) ? data : [];
         console.log('this.deals', data);
       },

@@ -1,14 +1,23 @@
 <div class="container">
   <div class="dashboard-content">
     <mat-card>
-      <mat-card-title>Month to Date</mat-card-title>
+      <mat-card-title>
+        <mat-button-toggle-group
+        [value]="selectedRange"
+        (change)="onRangeChange($event.value)"
+        exclusive
+      >
+        <mat-button-toggle value="monthToDate">Month to Date</mat-button-toggle>
+        <mat-button-toggle value="last30Days">Last 30 Days</mat-button-toggle>
+      </mat-button-toggle-group>
+  </mat-card-title>
       <mat-card-content>
         <div class="stats">
-          <div class="stat">Leads: - </div>
-          <div class="stat">Applications Sent: - </div>
-          <div class="stat">Contracts Pending: - </div>
-          <div class="stat">Contracts Funded: - </div>
-          <div class="stat">Total Payments to Dealer: - </div>
+          <div class="stat">Leads: {{ filteredStats?.leads || '-' }}</div>
+          <div class="stat">Applications Sent: {{ applicationsSent}}</div>
+          <div class="stat">Contracts Pending: {{contractsPending }}</div>
+          <div class="stat">Contracts Funded: {{ contractsFunded}}</div>
+          <div class="stat">Total Payments to Dealer: {{ totalPaymentsToDealer }}</div>
         </div>
       </mat-card-content>
     </mat-card>

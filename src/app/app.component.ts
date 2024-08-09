@@ -35,7 +35,7 @@ export class AppComponent {
    
     this.appService.login(this.loginCredentials).subscribe(
       response => {
-        // alert('Login successful!');
+        
          this.isLoggedIn = true;
          this.username = this.loginCredentials.username;
         
@@ -52,6 +52,9 @@ export class AppComponent {
     this.username = '';
     this.vendorName = '';
     this.vendorId = '';
+  }
+  profile(){
+    this.router.navigate(['/profile']);
   }
  
 

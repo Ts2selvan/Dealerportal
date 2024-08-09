@@ -1,0 +1,27 @@
+<div class="team-container">
+  
+    <mat-card class="team-header-card">
+      <mat-card-header>
+        <mat-card-title>MY TEAM</mat-card-title>
+        <!-- Add User Button -->
+       
+      </mat-card-header>
+     
+    </mat-card>
+    <mat-card class="team-add-card ">
+        <button mat-icon-button color="primary" class="add-user-button" (click)="openAddUserDialog()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <span>Add User</span>
+    </mat-card>
+  
+    <!-- User Cards -->
+    <mat-card class="user-card" *ngFor="let user of users">
+      <mat-card-content>
+        <div>{{ user.name }}</div>
+        <div>{{ user.role }}</div>
+      </mat-card-content>
+      </mat-card>
+    
+  </div>
+  
