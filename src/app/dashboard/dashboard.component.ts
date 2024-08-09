@@ -130,7 +130,7 @@ export class DashboardComponent implements OnInit {
       this.appService.getDeals(this.vendorId).subscribe(
         data => {
           this.deals = data.slice(first, first + rows);
-          this.totalRecords = data.length; // Update the total number of records
+          //this.totalRecords = data.length; 
         },
         error => {
           console.error('Error fetching deals', error);

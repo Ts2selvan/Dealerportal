@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
        
-        this.users.push(result);
+        //this.users.push(result);
       }
     });
   }
