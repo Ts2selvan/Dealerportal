@@ -7,7 +7,7 @@ import { Timestamp } from 'rxjs';
   styleUrls: ['./deals.component.scss']
 })
 export class DealsComponent implements OnInit {
-
+  activeTab: string = 'applications';
   constructor() { }
 
   ngOnInit(): void {

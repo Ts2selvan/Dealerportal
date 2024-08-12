@@ -1,17 +1,35 @@
-.search-and-date-container {
+.container {
+  .tabs {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      li {
+        padding: 10px 20px;
+        cursor: pointer;
+        &.active {
+          border-bottom: 2px solid #007bff;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 20px;
+  }
+
+  .search-and-date-container {
     display: flex;
-    align-items: flex-start; 
-    justify-content: space-between; 
-    max-width: 800px; 
-    margin: 0 auto; 
-    padding: 20px; 
+    align-items: center;
+
+    .separator {
+      width: 20px;
+    }
+
+    .mat-form-field {
+      margin-right: 15px;
+    }
   }
-  
-  .search-field, .date-field {
-    flex: 1; 
-  }
-  
-  .separator {
-    width: 20px; 
-  }
-  
+}

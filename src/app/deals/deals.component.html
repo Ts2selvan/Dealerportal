@@ -1,43 +1,16 @@
 <div class="container">
-   
-  <mat-tab-group>
-    <mat-tab label="Applications">
-     
-          <div class="search-and-date-container">
-              <mat-form-field appearance="fill" class="search-field">
-                <mat-label>Search</mat-label>
-                <input matInput type="text" placeholder="Search App ID, Application Name">
-                <button mat-button matSuffix mat-icon-button aria-label="Search">
-                  <mat-icon>search</mat-icon>
-                </button>
-              </mat-form-field>
-           
-              <div class="separator"></div>
-           
-              <mat-form-field appearance="fill" class="date-field">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Application Date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+  <div class="tabs">
+    <ul>
+      <li [class.active]="activeTab === 'applications'" (click)="activeTab = 'applications'">Applications</li>
+      <li [class.active]="activeTab === 'funding'" (click)="activeTab = 'funding'">In Funding</li>
+      <li [class.active]="activeTab === 'purchased'" (click)="activeTab = 'purchased'">Purchased</li>
+    </ul>
+  </div>
 
-              <div class="separator"></div>
-              <mat-form-field appearance="fill" class="decision-status-field">
-                <mat-label>Decision Status</mat-label>
-                <mat-select>
-                  <mat-option value="cancelled">Cancelled</mat-option>
-                  <mat-option value="counter-offered">Counter-Offered</mat-option>
-                  <mat-option value="credit-approved">Credit - Approved</mat-option>
-                  <mat-option value="credit-conditioned">Credit - Conditioned</mat-option>
-                </mat-select>
-              </mat-form-field>
-
-            </div>
-
-     
-    </mat-tab>
-     <mat-tab label="In Funding" >
+  <div class="tab-content">
+    <div *ngIf="activeTab === 'applications'">
       <div class="search-and-date-container">
+        <!-- Applications Content -->
         <mat-form-field appearance="fill" class="search-field">
           <mat-label>Search</mat-label>
           <input matInput type="text" placeholder="Search App ID, Application Name">
@@ -45,34 +18,67 @@
             <mat-icon>search</mat-icon>
           </button>
         </mat-form-field>
-     
+
         <div class="separator"></div>
-     
+
+        <mat-form-field appearance="fill" class="date-field">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Application Date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="separator"></div>
+
+        <mat-form-field appearance="fill" class="decision-status-field">
+          <mat-label>Decision Status</mat-label>
+          <mat-select>
+            <mat-option value="cancelled">Cancelled</mat-option>
+            <mat-option value="counter-offered">Counter-Offered</mat-option>
+            <mat-option value="credit-approved">Credit - Approved</mat-option>
+            <mat-option value="credit-conditioned">Credit - Conditioned</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'funding'">
+      <div class="search-and-date-container">
+        <!-- In Funding Content -->
+        <mat-form-field appearance="fill" class="search-field">
+          <mat-label>Search</mat-label>
+          <input matInput type="text" placeholder="Search App ID, Application Name">
+          <button mat-button matSuffix mat-icon-button aria-label="Search">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div class="separator"></div>
+
         <mat-form-field appearance="fill" class="date-field">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" placeholder="Contract Date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
         <div class="separator"></div>
 
         <mat-form-field appearance="fill" class="status-field">
           <mat-label>Status</mat-label>
           <mat-select>
             <mat-option value="expired">Expired</mat-option>
-            <mat-option value="funding-disperancy">Funding-Disperancy</mat-option>
+            <mat-option value="funding-discrepancy">Funding-Discrepancy</mat-option>
             <mat-option value="funding-pending">Funding-Pending</mat-option>
             <mat-option value="funding-returned">Funding-Returned</mat-option>
           </mat-select>
         </mat-form-field>
-
       </div>
-     </mat-tab>
+    </div>
 
-
-
-    <mat-tab label="Purchased">
+    <div *ngIf="activeTab === 'purchased'">
       <div class="search-and-date-container">
+        <!-- Purchased Content -->
         <mat-form-field appearance="fill" class="search-field">
           <mat-label>Search</mat-label>
           <input matInput type="text" placeholder="Search App ID, Application Name">
@@ -80,9 +86,9 @@
             <mat-icon>search</mat-icon>
           </button>
         </mat-form-field>
-     
+
         <div class="separator"></div>
-     
+
         <mat-form-field appearance="fill" class="date-field">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" placeholder="Contract Date">
@@ -90,20 +96,15 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-
         <div class="separator"></div>
-     
+
         <mat-form-field appearance="fill" class="date-field">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="picker" placeholder="Date Funded">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-
       </div>
-    </mat-tab>
-   
-  </mat-tab-group>
- 
-
+    </div>
+  </div>
 </div>
