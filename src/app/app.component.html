@@ -2,19 +2,20 @@
   <div class="login-container">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
+        <mat-card-title class="matHead">LOGIN</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="matField">
           <mat-label>Username</mat-label>
           <input matInput [(ngModel)]="loginCredentials.username">
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="matField">
           <mat-label>Password</mat-label>
           <input matInput [(ngModel)]="loginCredentials.password" type="password">
         </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="login()">Login</button>
+        
       </mat-card-content>
+      <button class="loginBtn" mat-stroked-button color="primary" (click)="login()">Login</button>
     </mat-card>
   </div>
 </ng-container>

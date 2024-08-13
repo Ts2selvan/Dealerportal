@@ -43,22 +43,70 @@ nav ul li a.active {
   align-items: center;
 }
 
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh; /* Adjust as necessary */
-}
+// .login-container {
+//   // display: flex;
+//   // justify-content: center;
+//   // align-items: center;
+//   // height: 80vh; /* Adjust as necessary */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh; /* Adjust as necessary */
+//   background-image: url('/assets/loginWP.jpg'); /* Replace with your image path */
+//   background-size: cover;
+//   background-position: center;
 
-.mat-card {
-  width: 400px;
-  padding: 20px;
-}
+// }
+
+// .mat-card {
+//   // width: 400px;
+//   // padding: 20px;
+//   width: 400px;
+//   padding: 20px;
+//   background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for the card */
+//   border-radius: 8px;
+// }
 
 .content {
   padding-top: 10px; /* Adjust for toolbar height */
 }
+.matField{
+  margin-left: 100px;
+}
+.loginBtn{
+  margin-left: 170px;
+}
+.matHead{
+  margin-left: 150px;
+}
 
 .vendor-id-input {
   margin-right: 10px;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh; /* Full height of the viewport */
+  background-image: url('/assets/loginIMG.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px; /* Ensures padding on smaller screens */
+}
+
+.mat-card {
+  height: 30vh;
+  width: 100%;
+  max-width: 400px; /* Max width of the card */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+@media (max-width: 480px) {
+  .mat-card {
+    padding: 15px; /* Less padding on smaller screens */
+  }
 }
