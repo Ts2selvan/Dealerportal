@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -68,7 +69,8 @@ import { AdduserdialogComponent } from './adduserdialog/adduserdialog.component'
     MatDialogModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSnackBarModule
 
   ],
   providers: [AuthGuard],

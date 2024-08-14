@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   contractsFunded:any=0;
   totalPaymentsToDealer:any=0;
 
-  totalRecords: number = 0; // To store the total number of records
+  totalRecords: number = 0; 
  
   
   constructor(private appService:AppService,private cdr: ChangeDetectorRef,private router:Router) { }
@@ -81,22 +81,22 @@ this.selectedRange='monthToDate';
           this.applicationsSent = this.deals.filter(deal => {
             const dealDate = new Date(deal.applicantDate);
             return dealDate >= startDate && dealDate <= endDate && deal.status ==='Approved';
-          }).length;// Start of the current month
+          }).length;
 
           this.contractsPending = this.deals.filter(deal => {
             const dealDate = new Date(deal.applicantDate);
             return dealDate >= startDate && dealDate <= endDate && deal.status ==='Pending';
-          }).length;// Start of the current month
+          }).length;
 
           this.contractsFunded = this.deals.filter(deal => {
             const dealDate = new Date(deal.applicantDate);
             return dealDate >= startDate && dealDate <= endDate && deal.status ==='CreditFunded';
-          }).length;// Start of the current month
+          }).length;
 
           this.totalPaymentsToDealer = this.deals.filter(deal => {
             const dealDate = new Date(deal.applicantDate);
             return dealDate >= startDate && dealDate <= endDate && deal.status ==='TotallyCredited';
-          }).length;// Start of the current month
+          }).length;
 
 
         } else if (this.selectedRange === 'last30Days') {

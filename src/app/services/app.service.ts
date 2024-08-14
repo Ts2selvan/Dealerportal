@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
@@ -43,4 +43,13 @@ export class AppService {
   getAllDeals(){
     return this.http.get<any[]>(`${environment.apiUrlforGetAll}`);
   }
+  // searchDatabyIDorName(query:any): Observable<any[]> {
+    
+  //   return this.http.get<any[]>(`${environment.apiUrlforGetApplicationsByNameId}/${query}`);
+  // }
+  searchDatabyIDorName(searchTerm: string): Observable<any> {
+    const params = new HttpParams().set('searchTerm', searchTerm);
+    return this.http.get<any>(`${environment.apiUrlforGetApplicationsByNameId}`, { params });
+}
+
 }

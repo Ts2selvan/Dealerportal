@@ -8,7 +8,8 @@ export const environment = {
   // apiUrlLogin:'https://localhost:44344/api/User/Login'
     apiUrlforGet: 'https://localhost:44318/api/Applicant/vendor',
   apiUrlLogin:'https://localhost:44318/api/User/Login',
-  apiUrlforGetAll:'https://localhost:44318/api/Applicant/GetAll'
+  apiUrlforGetAll:'https://localhost:44318/api/Applicant/GetAll',
+  apiUrlforGetApplicationsByNameId:'https://localhost:44318/api/Applicant/search',
 };
 
 /*
