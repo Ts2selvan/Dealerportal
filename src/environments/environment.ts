@@ -10,6 +10,11 @@ export const environment = {
   apiUrlLogin:'https://localhost:44318/api/User/Login',
   apiUrlforGetAll:'https://localhost:44318/api/Applicant/GetAll',
   apiUrlforGetApplicationsByNameId:'https://localhost:44318/api/Applicant/search',
+  apiUrlforGetApplicationsByDate:'https://localhost:44318/api/Applicant/date',
+  apiUrlforAddUser:'https://localhost:44318/api/ProfileSetting',
+  apiUrlforDeleteUser :'https://localhost:44318/api/ProfileSetting',
+  apiUrlforGetAllProfile:'https://localhost:44318/api/ProfileSetting/GetAllUserProfiles',
+  apiUrlUpdateProfile:'https://localhost:44318/api/ProfileSetting'
 };
 
 /*

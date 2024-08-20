@@ -16,12 +16,12 @@ export class AdduserdialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) 
     {
       this.addUserForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        username: ['', Validators.required],
-        mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-        role: ['', Validators.required]
+        email: [data.email, [Validators.required, Validators.email]],
+        firstName: [data.firstName, Validators.required],
+        lastName: [data.lastName, Validators.required],
+        username: [data.username, Validators.required],
+        mobileNumber: [data.mobileNumber, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+        role: [data.role, Validators.required]
       });
      }
 
@@ -32,8 +32,9 @@ export class AdduserdialogComponent implements OnInit {
   }
 
   onSave(): void {
-    // if (this.addUserForm.valid) {
-    //   this.dialogRef.close(this.addUserForm.value); 
-    // }
+    debugger;
+    if (this.addUserForm.valid) {
+      this.dialogRef.close(...this.data,...this.addUserForm.value); 
+    }
   }
 }

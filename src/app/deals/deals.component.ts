@@ -20,16 +20,17 @@ export class DealsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // onDateChange(event: MatDatepickerInputEvent<Date>) {
-  //   const selectedDate = event.value;
-  //   if (selectedDate) {
+  onDateChange(event: MatDatepickerInputEvent<Date>) {
+    // debugger;
+    // const selectedDate = event.value?.toString();
+    // if (selectedDate) {
       
-  //     this.appService.getDataForDate(selectedDate).subscribe(data => {
-  //       console.log(data);
+    //   this.appService.getDataForDate(selectedDate).subscribe(data => {
+    //     console.log(data);
        
-  //     });
-  //   }
-  // }
+    //   });
+    //}
+  }
   onSearch() {
     if (this.searchQuery.trim()) {
       this.appService.searchDatabyIDorName(this.searchQuery).subscribe(

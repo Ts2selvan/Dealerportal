@@ -22,4 +22,63 @@
     width: 100%;
     margin-bottom: 10px;
   }
+  /* Remove the default borders and padding from the table */
+.p-table {
+  border: none;
+  width: 100%;
+  
+  table {
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: none;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  
+  th {
+    font-weight: bold;
+    color: #3f51b5; /* Optional: Customize the header text color */
+  }
+  
+  td {
+    font-size: 14px;
+    color: #333; /* Optional: Customize the body text color */
+  }
+
+  /* Add hover effect for table rows */
+  tr:hover {
+    background-color: #f5f5f5; /* Optional: Customize the hover background color */
+  }
+
+  /* Style the buttons inside the table */
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    margin: 0;
+    min-width: 36px;
+
+    mat-icon {
+      font-size: 18px;
+    }
+
+    &.mat-raised-button {
+      box-shadow: none; /* Remove default shadow */
+      text-transform: none; /* Disable uppercase text */
+    }
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    th, td {
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+  }
+}
+
+  
   
