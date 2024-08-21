@@ -1,0 +1,58 @@
+.customer-details {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  
+    h2 {
+      text-align: center;
+    }
+  
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+  
+      .form-section {
+        width: 48%;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        background-color: #fff;
+        
+  
+        h3 {
+          text-align: center;
+        }
+  
+        .form-group {
+          margin-bottom: 15px;
+  
+          mat-form-field {
+            width: 100%;
+          }
+  
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+  
+    .submit-button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  
+      &:disabled {
+        background-color: #ccc;
+      }
+    }
+  }
+  

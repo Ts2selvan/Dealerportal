@@ -40,6 +40,7 @@ export class ProfileComponent implements OnInit {
       if (result) {
         debugger
         this.addUser(result);
+        this.loadUsers();
       }
     });
   }
@@ -50,7 +51,8 @@ export class ProfileComponent implements OnInit {
       (response) => {
         debugger
         console.log('res',response)
-        this.users.push(response); // Add the new user to the list of users
+        this.users.push(response);
+        this.loadUsers(); 
       },
       (error) => {
         console.error('Error adding user', error);
@@ -86,9 +88,10 @@ editUser(user: User) {
       //   this.loadUsers(); 
       // });
       this.addUser(result);
+   
       this.loadUsers(); 
     }
-
+    
   });
 }
 }

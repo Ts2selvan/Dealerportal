@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdduserdialogComponent } from './adduserdialog/adduserdialog.component';
+import { ApplicantComponent } from './applicant/applicant.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'leads', component: LeadsComponent },
   { path: 'deals', component: DealsComponent },
   { path: 'profile', component: ProfileComponent },
-  {path:'adduserdialog',component:AdduserdialogComponent}
+  {path:'adduserdialog',component:AdduserdialogComponent},
+  {path:'applicant',component:ApplicantComponent}
 ];
 
 

@@ -22,12 +22,12 @@ roleID:any;
  
   loginCredentials = { username: '', password: '' };
 
-
+  userRole:any;
 
   constructor(private router:Router,private appService:AppService){}
  
   ngOnInit(){
-    sessionStorage.removeItem('userRole');
+  
     this.appService.currentVendorName.subscribe(
       name=>this.vendorName=name);
     
@@ -41,6 +41,7 @@ roleID:any;
          this.isLoggedIn = true;
          this.username = this.loginCredentials.username;
          sessionStorage.setItem('UserRole', response.roleId);
+         this.userRole = sessionStorage.getItem('UserRole');
         // console.log('ss',  sessionStorage.setItem('UserRole',response.roleId))
 
       },

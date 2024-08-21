@@ -31,11 +31,11 @@
               <td>{{ user.roleId === 1 ? 'Admin' : 
                 user.roleId === 2 ? 'User' : 
                 user.roleId === 3 ? 'Guest' : '' }}</td>
-              <td><button (click)="editUser(user)" mat-raised-button color="primary">
+              <td  ><button [disabled]="userRole != '1'"   (click)="editUser(user)" mat-raised-button color="primary">
                 <mat-icon>edit</mat-icon>
                 
               </button>
-              &nbsp;<button (click)="deleteUser(user.profileSettingId)" mat-raised-button color="primary">
+              &nbsp;<button [disabled]="userRole != '1'"  (click)="deleteUser(user.profileSettingId)" mat-raised-button color="primary">
                 <mat-icon>delete</mat-icon>
                 
               </button>
