@@ -34,6 +34,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdduserdialogComponent } from './adduserdialog/adduserdialog.component';
+import { ApplicantComponent } from './applicant/applicant.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdduserdialogComponent } from './adduserdialog/adduserdialog.component'
     DealsComponent,
     LoginComponent,
     ProfileComponent,
-    AdduserdialogComponent
+    AdduserdialogComponent,
+    ApplicantComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdduserdialogComponent } from '../adduserdialog/adduserdialog.component';
 import { AppService } from '../services/app.service';
 export interface User {
+  
   userId: number;
   firstName: string;
   lastName: string;
@@ -35,13 +36,15 @@ export class ProfileComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      debugger
       if (result) {
-       
+        debugger
         this.addUser(result);
       }
     });
   }
   addUser(user: any): void {
+    debugger
     // Example method to handle adding the user to the backend
     this.appService.addUser(user).subscribe(
       (response) => {
@@ -55,9 +58,10 @@ export class ProfileComponent implements OnInit {
     );
 
 }
-deleteUser(user: User) {
+deleteUser(user: any) {
   if (confirm(`Are you sure you want to delete ${user.firstName} ${user.lastName}?`)) {
-    this.appService.deleteUser(user.userId).subscribe(() => {
+    debugger
+    this.appService.deleteUser(user).subscribe(() => {
       this.loadUsers(); 
     });
   }
@@ -65,6 +69,7 @@ deleteUser(user: User) {
 loadUsers() {
   this.appService.getAllUsers().subscribe((data: User[]) => {
     this.users = data;
+    console.log('this.users',this.users)
   });
 }
 editUser(user: User) {
@@ -72,13 +77,18 @@ editUser(user: User) {
     width: '400px',
     data: user
   });
-
+  debugger
   dialogRef.afterClosed().subscribe(result => {
+    debugger
     if (result) {
-      this.appService.updateUser(result).subscribe(() => {
-        this.loadUsers(); 
-      });
+      debugger
+      // this.appService.updateUser(result).subscribe(() => {
+      //   this.loadUsers(); 
+      // });
+      this.addUser(result);
+      this.loadUsers(); 
     }
+
   });
 }
 }
