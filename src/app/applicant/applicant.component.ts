@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 import { MatTableDataSource } from '@angular/material/table';
+import { AppService } from '../services/app.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-export interface Customer {
-  customerId: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: number;
-  dateOfBirth: string; 
-  gender: string;
-  maritalStatus: string;
-  occupationType: string;
-  addressId: number;
-  address: any;
+export interface Applicant {
+  applicantId: number,
+    vendorId: number,
+    applicant1: string,
+    email: string,
+    phone:number,
+    dateOfBirth: Date,
+    gender: string,
+    maritalStatus: string,
+    occupationType: string,
+    houseNo: string,
+    city: string,
+    district: string,
+    state: string,
+    landmark: string,
+    pincode: number,
+    country: string
+   
 }
 
 @Component({
@@ -23,87 +31,94 @@ export interface Customer {
   styleUrls: ['./applicant.component.scss']
 })
 export class ApplicantComponent implements OnInit {
-  applicantForm!: FormGroup;
-  customer = {
-    customerId: 0,
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: 0,
-    dateOfBirth: '',
-    gender: '',
-    maritalStatus: '',
-    occupationType: '',
-    addressId: 0,
-    address: {
-      addressId: 0,
-      houseNo: '',
-      city: '',
-      district: '',
-      state: '',
-      landmark: '',
-      pincode: 0,
-      country: ''
-    }
-  };
-  customers: Customer[] = [];
+  applicants: Applicant[] = [];
+  applicantId:number=0
+  applicant1: string = '';
+  dateOfBirth: string='' ;
+  gender: string = '';
+  maritalStatus: string = '';
+  occupationType: string = '';
+  email: string = '';
+  phone: string = '';
+  houseNo: string = '';
+  city: string = '';
+  district: string = '';
+  state: string = '';
+  landmark: string = '';
+  pincode: string = '';
+  country: string = '';
+  loanAmount:string='';
+  loanTerm:string='';
+  interestRate:string='';
+  monthlyPayment:string='';
+
+  
   // applicants: MatTableDataSource<any> = new MatTableDataSource([]);
  
-  vendors: any[] = []; // Assuming vendor data is fetched from a service
+
   displayedColumns: string[] = ['applicantName', 'email', 'actions'];
 
-  constructor(private fb: FormBuilder) {}
+  vendors: any[] = []; 
+  selectedVendorId: string | null = null;
+
+  constructor(private fb: FormBuilder,private appService:AppService,private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.initializeForm();
-    this.loadApplicants();
     this.loadVendors();
   }
 
-  initializeForm() {
-    // this.applicantForm = this.fb.group({
-    //   applicantName: [''],
-    //   email: [''],
-    //   phone: [''],
-    //   vendorId: [''],
-    //   // Add other form controls here
-    // });
-  }
+  onSubmit(form: NgForm): void {
+    if (form.valid) {
+      const newApplicant = {
+        applicant1: this.applicant1,
+        dateOfBirth: this.dateOfBirth,
+        gender: this.gender,
+        maritalStatus: this.maritalStatus,
+        occupationType: this.occupationType,
+        email: this.email,
+        phone: this.phone.toString(),
+        houseNo: this.houseNo,
+        city: this.city,
+        district: this.district,
+        state: this.state,
+        landmark: this.landmark,
+        pincode: this.pincode.toString(),
+        country: this.country,
+        applicantId:this.applicantId,
+        vendorId:this.selectedVendorId,
+        loanAmount:this.loanAmount.toString(),
+        loanTerm:this.loanTerm.toString(),
+        interestRate:this.interestRate.toString(),
+        monthlyPayment:this.monthlyPayment.toString()
 
-  loadApplicants() {
-    // this.applicantService.getAllApplicants().subscribe(data => {
-    //   this.applicants.data = data;
-    // });
+      };
+debugger;
+      this.appService.addApplicant(newApplicant).subscribe(
+        (response) => {
+          debugger;
+          this.snackBar.open('Applicant added successfully!', 'Close', {
+            duration: 3000
+          });
+          form.resetForm();
+        },
+        (error) => {
+          this.snackBar.open('Failed to add applicant. Please try again.', 'Close', {
+            duration: 3000
+          });
+          console.error('Error adding applicant:', error);
+        }
+      );
+    }
   }
-
-  loadVendors() {
-    // this.applicantService.getAllVendors().subscribe(data => {
-    //   this.vendors = data;
-    // });
-  }
-
-  onSubmit() {
-    // if (this.applicantForm.valid) {
-    //   if (this.applicantForm.value.applicantId) {
-    //     this.applicantService.updateApplicant(this.applicantForm.value).subscribe(() => {
-    //       this.loadApplicants();
-    //     });
-    //   } else {
-    //     this.applicantService.addApplicant(this.applicantForm.value).subscribe(() => {
-    //       this.loadApplicants();
-    //     });
-    //   }
-    //   this.applicantForm.reset();
-    // }
-  }
-
-  editApplicant(applicant: any) {
-    // this.applicantForm.patchValue(applicant);
-  }
-
-  deleteApplicant(applicantId: number) {
-    // this.applicantService.deleteApplicant(applicantId).subscribe(() => {
-    //   this.loadApplicants();
-    // });
+  loadVendors(): void {
+    this.appService.getVendors().subscribe(
+      (data) => {
+        console.log('vendor',data)
+        this.vendors = data;
+      },
+      (error) => {
+        console.error('Error fetching vendors', error);
+      }
+    );
   }
 }

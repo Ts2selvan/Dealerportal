@@ -14,6 +14,7 @@ export interface User {
   roleId: number;
   role: string; 
 } 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -87,5 +88,12 @@ getAllUsers(): Observable<User[]> {
 updateUser(user: User): Observable<User> {
   return this.http.put<User>(`${environment.apiUrlUpdateProfile}/${user.userId}`, user);
 }
-
+addApplicant(applicant: any): Observable<any> {
+  console.log('api',environment.apiUrlAddApplicant)
+  console.log('data',applicant)
+  return this.http.post<any>(`${environment.apiUrlAddApplicant}`, applicant);
+}
+getVendors(): Observable<any[]> {
+  return this.http.get<any[]>(`${environment.apiUrlGetAllVendor}`);
+}
 }

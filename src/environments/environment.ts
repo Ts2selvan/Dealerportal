@@ -14,7 +14,9 @@ export const environment = {
   apiUrlforAddUser:'https://localhost:44318/api/ProfileSetting',
   apiUrlforDeleteUser :'https://localhost:44318/api/ProfileSetting',
   apiUrlforGetAllProfile:'https://localhost:44318/api/ProfileSetting/GetAllUserProfiles',
-  apiUrlUpdateProfile:'https://localhost:44318/api/ProfileSetting'
+  apiUrlUpdateProfile:'https://localhost:44318/api/ProfileSetting',
+  apiUrlAddApplicant:'https://localhost:44318/api/Applicant',
+  apiUrlGetAllVendor:'https://localhost:44318/api/Vendor/GetAll'
 };
 
 /*

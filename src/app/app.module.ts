@@ -20,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -72,7 +73,9 @@ import { ApplicantComponent } from './applicant/applicant.component';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatExpansionModule
 
   ],
   providers: [AuthGuard],
