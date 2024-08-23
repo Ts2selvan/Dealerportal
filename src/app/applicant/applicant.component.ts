@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from '../services/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
+
+
+
+
+
 
 export interface Applicant {
   applicantId: number,
@@ -31,6 +37,12 @@ export interface Applicant {
   styleUrls: ['./applicant.component.scss']
 })
 export class ApplicantComponent implements OnInit {
+
+
+
+
+  showApplicants: boolean = false;
+
   applicants: Applicant[] = [];
   applicantId:number=0
   applicant1: string = '';
@@ -52,11 +64,14 @@ export class ApplicantComponent implements OnInit {
   interestRate:string='';
   monthlyPayment:string='';
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  dataSource = new MatTableDataSource<Applicant>(this.applicants);
+
   
   // applicants: MatTableDataSource<any> = new MatTableDataSource([]);
  
-
-  displayedColumns: string[] = ['applicantName', 'email', 'actions'];
+ 
+  displayedColumns: string[] = ['applicantName', 'email','occupationType','phone','actions'];
 
   vendors: any[] = []; 
   selectedVendorId: string | null = null;
@@ -66,6 +81,10 @@ export class ApplicantComponent implements OnInit {
   ngOnInit(): void {
     this.loadVendors();
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   onSubmit(form: NgForm): void {
     if (form.valid) {
@@ -121,4 +140,35 @@ debugger;
       }
     );
   }
+  
+  toggleApplicants(): void {
+    this.showApplicants = !this.showApplicants;
+    if (this.showApplicants) {
+       this.loadApplicants(); 
+    }
+  }
+
+  loadApplicants(): void {
+    this.appService.getAllApplicants().subscribe(
+      (data) => {
+        this.applicants = data;
+        this.dataSource.data = this.applicants; 
+        this.dataSource.paginator = this.paginator; 
+      },
+      (error) => {
+        console.error('Error fetching applicants', error);
+      }
+    );
+  }
+  deleteApplicant(applicant: any) {
+    console.log('appDelete',applicant)
+    if (confirm(`Are you sure you want to delete ${applicant.applicant1} ?`)) {
+      debugger
+      
+      this.appService.deleteApplicant(applicant.applicantId).subscribe(() => {
+        this.loadApplicants(); 
+      });
+    }
+  }
+
 }

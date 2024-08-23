@@ -22,6 +22,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -75,7 +76,8 @@ import { ApplicantComponent } from './applicant/applicant.component';
     MatButtonToggleModule,
     MatSnackBarModule,
     MatTableModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatPaginatorModule
 
   ],
   providers: [AuthGuard],

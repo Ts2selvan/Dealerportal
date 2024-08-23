@@ -1,10 +1,58 @@
 <div class="loan-application-container">
   <div class="header-banner">
     <h1>Loan Application</h1>
-    <p>Complete your application!</p>
+    
   </div>
+  <!-- <div class="button-container">
+    <button mat-raised-button color="accent" class="view-all-button">View All Applicants</button>
+    <a href="https://www.example.com" class="view-all-link">View All Applicants</a>
+  </div> -->
+  <div class="button-container">
+    <a  (click)="toggleApplicants()" class="view-all-link">{{ showApplicants ? 'Add Applicants' : 'View All Applicants' }}</a>
+  </div>
+  
 
-  <form (ngSubmit)="onSubmit(applicantForm)" #applicantForm="ngForm" class="form-container">
+  <div *ngIf="showApplicants" class="applicants-grid-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Define columns here -->
+      <ng-container matColumnDef="applicantName">
+        <th mat-header-cell *matHeaderCellDef> Applicant Name </th>
+        <td mat-cell *matCellDef="let applicant"> {{ applicant.applicant1 }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let applicant"> {{ applicant.email }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="occupationType">
+        <th mat-header-cell *matHeaderCellDef> Employment </th>
+        <td mat-cell *matCellDef="let applicant"> {{ applicant.occupationType }} </td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let applicant"> {{ applicant.phone }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let applicant">
+          <button mat-icon-button color="warn" (click)="deleteApplicant(applicant)"  >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Add more columns as needed  (click)="deleteApplicant(applicant.applicantId)"-->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="6" [pageSizeOptions]="[6, 12, 18]" showFirstLastButtons></mat-paginator>
+  </div>
+  
+
+  <form (ngSubmit)="onSubmit(applicantForm)" #applicantForm="ngForm" class="form-container" *ngIf="!showApplicants">
    
     <div class="form-sections">
       <mat-expansion-panel class="form-section">

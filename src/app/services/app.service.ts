@@ -14,6 +14,25 @@ export interface User {
   roleId: number;
   role: string; 
 } 
+export interface Applicant {
+  applicantId: number,
+    vendorId: number,
+    applicant1: string,
+    email: string,
+    phone:number,
+    dateOfBirth: Date,
+    gender: string,
+    maritalStatus: string,
+    occupationType: string,
+    houseNo: string,
+    city: string,
+    district: string,
+    state: string,
+    landmark: string,
+    pincode: number,
+    country: string
+   
+}
 
 @Injectable({
   providedIn: 'root'
@@ -95,5 +114,11 @@ addApplicant(applicant: any): Observable<any> {
 }
 getVendors(): Observable<any[]> {
   return this.http.get<any[]>(`${environment.apiUrlGetAllVendor}`);
+}
+getAllApplicants(): Observable<Applicant[]>{
+  return this.http.get<Applicant[]>(`${environment.apiUrlGetAllApplicantsOnly}`);
+}
+deleteApplicant(applicantId: number): Observable<void> {
+  return this.http.delete<void>(`${environment.apiUrlforDeleteApplicant}/${applicantId}`);
 }
 }
