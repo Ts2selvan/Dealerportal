@@ -18,7 +18,9 @@ export const environment = {
   apiUrlAddApplicant:'https://localhost:44318/api/Applicant',
   apiUrlGetAllVendor:'https://localhost:44318/api/Vendor/GetAll',
   apiUrlGetAllApplicantsOnly:'https://localhost:44318/api/Applicant/GetAllApplicantsOnly',
-  apiUrlforDeleteApplicant:'https://localhost:44318/api/Applicant'
+  apiUrlforDeleteApplicant:'https://localhost:44318/api/Applicant',
+  apiUrlforUpdateApplicant:'https://localhost:44318/api/Applicant'
+  ,
 };
 
 /*

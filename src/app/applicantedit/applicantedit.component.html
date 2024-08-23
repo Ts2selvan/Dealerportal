@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>Edit Applicant</h2>
+<mat-dialog-content>
+  <form [formGroup]="editApplicantForm">
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Applicant Name</mat-label>
+        <input matInput formControlName="applicant1" placeholder="Enter applicant name" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="dateOfBirth" type="date" placeholder="Enter date of birth" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" placeholder="Select gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Marital Status</mat-label>
+        <mat-select formControlName="maritalStatus" placeholder="Select marital status" required>
+          <mat-option value="single">Single</mat-option>
+          <mat-option value="married">Married</mat-option>
+          <mat-option value="divorced">Divorced</mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Occupation Type</mat-label>
+        <input matInput formControlName="occupationType" placeholder="Enter occupation type" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Enter email" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" type="tel" placeholder="Enter phone number" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>House No</mat-label>
+        <input matInput formControlName="houseNo" placeholder="Enter house number" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" placeholder="Enter city" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>District</mat-label>
+        <input matInput formControlName="district" placeholder="Enter district" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state" placeholder="Enter state" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Landmark</mat-label>
+        <input matInput formControlName="landmark" placeholder="Enter landmark" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Pincode</mat-label>
+        <input matInput formControlName="pincode" placeholder="Enter pincode" required>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" placeholder="Enter country" required>
+      </mat-form-field>
+   
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="!editApplicantForm.valid">Update</button>
+</mat-dialog-actions>

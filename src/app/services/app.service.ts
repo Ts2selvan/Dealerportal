@@ -121,4 +121,7 @@ getAllApplicants(): Observable<Applicant[]>{
 deleteApplicant(applicantId: number): Observable<void> {
   return this.http.delete<void>(`${environment.apiUrlforDeleteApplicant}/${applicantId}`);
 }
+updateApplicant(applicantId: number, applicantData: any): Observable<void> {
+  return this.http.put<void>(`${environment.apiUrlforUpdateApplicant}/${applicantId}`, applicantData);
+}
 }

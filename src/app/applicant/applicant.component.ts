@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from '../services/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
+import { ApplicanteditComponent } from '../applicantedit/applicantedit.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -76,7 +78,7 @@ export class ApplicantComponent implements OnInit {
   vendors: any[] = []; 
   selectedVendorId: string | null = null;
 
-  constructor(private fb: FormBuilder,private appService:AppService,private snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder,private appService:AppService,private snackBar: MatSnackBar,private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadVendors();
@@ -170,5 +172,38 @@ debugger;
       });
     }
   }
+  openEditApplicantDialog(app:Applicant): void {
+    console.log('app',app)
+    const dialogRef = this.dialog.open(ApplicanteditComponent, {
+      width: '400px',
+      data: app 
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      debugger
+      if (result) {
+        debugger
+        console.log('resss',result)
+       this.UpdateApplicant(result.applicantId,result);
+      
+      }
+    });
+  }
+  UpdateApplicant(appId:any,user: any): void {
+    debugger
+    
+    this.appService.updateApplicant(appId,user).subscribe(
+      (response) => {
+        debugger
+        console.log('res',response)
+       // this.applicants.push(response);
+        this.loadApplicants();
+        
+      },
+      (error) => {
+        console.error('Error Editing applicant', error);
+      }
+    );
+
+}
 }
